@@ -9,18 +9,15 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
 
 
-  // Link to Unsplash Search API: https://unsplash.com/documentation#search-photos
+  // Link to Unsplash Search API Documentation: https://unsplash.com/documentation#search-photos
   async function getUnsplashPhotos() {
     try {
       //IMPORTANT! Update the below variable with your own api key!!
-
-      //Example of what your api key will look like: 
-      // const apiKey = 'tadf23bkyIjWtFP1kq0123JdfjTy-PmbXECj1ronjuXnwD12';
       const apiKey = '';
 
       //making unsplash api call to search for photos based on search query
-      let resp = await axios.get(`https://api.unsplash.com/search/photos?client_id=${apiKey}&query=${searchQuery}&per_page=5&orientation=squarish`);
-
+      let resp = await axios.get(`https://api.unsplash.com/search/photos?client_id=${apiKey}&query=${searchQuery}&per_page=15`);
+      console.log(21, resp.data.results);
       //store the array of results into urlsToDisplay variable
       setUrlsToDisplay(resp.data.results);
     } catch (e) {
